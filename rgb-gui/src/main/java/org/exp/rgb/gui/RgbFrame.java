@@ -1,10 +1,23 @@
 package org.exp.rgb.gui;
 
+import java.awt.Color;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JSlider;
+import org.exp.math.BigIntegerUtils;
+import org.exp.math.PrimeFactorGenerator;
+import org.exp.math.PrimeRoot;
+import org.exp.math.debug.Debug;
+import org.exp.rgb.gui.tools.LogPane;
+import org.exp.rgb.gui.tools.RgbVals;
+
 public class RgbFrame extends javax.swing.JFrame {
 
     /** Creates new form RgbFrame */
     public RgbFrame() {
         initComponents();
+        userInit();
     }
 
     /** This method is called from within the constructor to
@@ -16,9 +29,472 @@ public class RgbFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        appTabs = new javax.swing.JTabbedPane();
+        additiveTab = new javax.swing.JPanel();
+        redPanel = new javax.swing.JPanel();
+        redTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        greenTextField = new javax.swing.JTextField();
+        blueTextField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        setRGBButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        greenPanel = new javax.swing.JPanel();
+        bluePanel = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        combinedPanel = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        redSlider = new javax.swing.JSlider();
+        greenSlider = new javax.swing.JSlider();
+        blueSlider = new javax.swing.JSlider();
+        primeTab = new javax.swing.JPanel();
+        mathMessagesPanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        primePane = new javax.swing.JTextPane();
+        mathInputPane = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        numberTextField = new javax.swing.JTextField();
+        primeRootsButton = new javax.swing.JButton();
+        listPrimeButton = new javax.swing.JButton();
+        clearMathOutButton = new javax.swing.JButton();
+        gcdButton = new javax.swing.JButton();
+        lcmButton = new javax.swing.JButton();
+        debugTab = new javax.swing.JPanel();
+        debugPanel = new javax.swing.JPanel();
+        displayAppStateButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        dbgPane = new javax.swing.JTextPane();
+        clearLogButton = new javax.swing.JButton();
+        displayMemoryButton = new javax.swing.JButton();
+        garbageCollectButton = new javax.swing.JButton();
+        resetPrimesButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        redPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout redPanelLayout = new javax.swing.GroupLayout(redPanel);
+        redPanel.setLayout(redPanelLayout);
+        redPanelLayout.setHorizontalGroup(
+            redPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        redPanelLayout.setVerticalGroup(
+            redPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 282, Short.MAX_VALUE)
+        );
+
+        redTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        jLabel1.setText("Red");
+
+        greenTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        blueTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        jLabel2.setText("Green");
+
+        jLabel3.setText("Blue");
+
+        setRGBButton.setText("Set RGB Values");
+        setRGBButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setRGBButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Red");
+
+        greenPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout greenPanelLayout = new javax.swing.GroupLayout(greenPanel);
+        greenPanel.setLayout(greenPanelLayout);
+        greenPanelLayout.setHorizontalGroup(
+            greenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        greenPanelLayout.setVerticalGroup(
+            greenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 282, Short.MAX_VALUE)
+        );
+
+        bluePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout bluePanelLayout = new javax.swing.GroupLayout(bluePanel);
+        bluePanel.setLayout(bluePanelLayout);
+        bluePanelLayout.setHorizontalGroup(
+            bluePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        bluePanelLayout.setVerticalGroup(
+            bluePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 282, Short.MAX_VALUE)
+        );
+
+        jLabel5.setText("Green");
+
+        jLabel6.setText("Blue");
+
+        combinedPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout combinedPanelLayout = new javax.swing.GroupLayout(combinedPanel);
+        combinedPanel.setLayout(combinedPanelLayout);
+        combinedPanelLayout.setHorizontalGroup(
+            combinedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 297, Short.MAX_VALUE)
+        );
+        combinedPanelLayout.setVerticalGroup(
+            combinedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 282, Short.MAX_VALUE)
+        );
+
+        jLabel7.setText("Added Colors");
+
+        redSlider.setMaximum(255);
+        redSlider.setValue(0);
+        redSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                redSliderStateChanged(evt);
+            }
+        });
+
+        greenSlider.setMaximum(255);
+        greenSlider.setValue(0);
+        greenSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                greenSliderStateChanged(evt);
+            }
+        });
+
+        blueSlider.setMaximum(255);
+        blueSlider.setValue(0);
+        blueSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                blueSliderStateChanged(evt);
+            }
+        });
+
+        javax.swing.GroupLayout additiveTabLayout = new javax.swing.GroupLayout(additiveTab);
+        additiveTab.setLayout(additiveTabLayout);
+        additiveTabLayout.setHorizontalGroup(
+            additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(additiveTabLayout.createSequentialGroup()
+                .addGroup(additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(additiveTabLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(44, 44, 44)
+                        .addGroup(additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(blueTextField)
+                            .addComponent(redTextField)
+                            .addComponent(greenTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(redSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(greenSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                            .addComponent(blueSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)))
+                    .addGroup(additiveTabLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(setRGBButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(additiveTabLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(redPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(greenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bluePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(125, 125, 125)
+                        .addGroup(additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(combinedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(175, Short.MAX_VALUE))
+        );
+        additiveTabLayout.setVerticalGroup(
+            additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(additiveTabLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(combinedPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(redPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(greenPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bluePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(additiveTabLayout.createSequentialGroup()
+                        .addGroup(additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(redTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1))
+                            .addComponent(redSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(greenTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)))
+                    .addComponent(greenSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(additiveTabLayout.createSequentialGroup()
+                        .addGroup(additiveTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(blueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addComponent(setRGBButton))
+                    .addComponent(blueSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        appTabs.addTab("Additive", additiveTab);
+
+        mathMessagesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Math Output"));
+
+        primePane.setBackground(new java.awt.Color(0, 0, 0));
+        primePane.setFont(new java.awt.Font("Monospaced", 1, 14));
+        primePane.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setViewportView(primePane);
+
+        javax.swing.GroupLayout mathMessagesPanelLayout = new javax.swing.GroupLayout(mathMessagesPanel);
+        mathMessagesPanel.setLayout(mathMessagesPanelLayout);
+        mathMessagesPanelLayout.setHorizontalGroup(
+            mathMessagesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 929, Short.MAX_VALUE)
+            .addGroup(mathMessagesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mathMessagesPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 905, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        mathMessagesPanelLayout.setVerticalGroup(
+            mathMessagesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 307, Short.MAX_VALUE)
+            .addGroup(mathMessagesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mathMessagesPanelLayout.createSequentialGroup()
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        mathInputPane.setBorder(javax.swing.BorderFactory.createTitledBorder("Math Input"));
+
+        jLabel8.setText("Input Numbers");
+
+        numberTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        primeRootsButton.setText("Prime Roots");
+        primeRootsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                primeRootsButtonActionPerformed(evt);
+            }
+        });
+
+        listPrimeButton.setText("List n Primes");
+        listPrimeButton.setActionCommand("List Primes");
+        listPrimeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listPrimeButtonActionPerformed(evt);
+            }
+        });
+
+        clearMathOutButton.setText("Clear Messages");
+        clearMathOutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearMathOutButtonActionPerformed(evt);
+            }
+        });
+
+        gcdButton.setText("Least Common Factor");
+        gcdButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gcdButtonActionPerformed(evt);
+            }
+        });
+
+        lcmButton.setText("Least Common Multiple");
+        lcmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lcmButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout mathInputPaneLayout = new javax.swing.GroupLayout(mathInputPane);
+        mathInputPane.setLayout(mathInputPaneLayout);
+        mathInputPaneLayout.setHorizontalGroup(
+            mathInputPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mathInputPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(mathInputPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mathInputPaneLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(numberTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 789, Short.MAX_VALUE))
+                    .addGroup(mathInputPaneLayout.createSequentialGroup()
+                        .addGroup(mathInputPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(listPrimeButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(primeRootsButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(mathInputPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lcmButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(gcdButton, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(clearMathOutButton)))
+                .addContainerGap())
+        );
+        mathInputPaneLayout.setVerticalGroup(
+            mathInputPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mathInputPaneLayout.createSequentialGroup()
+                .addGroup(mathInputPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(numberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(mathInputPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(primeRootsButton)
+                    .addComponent(gcdButton)
+                    .addComponent(clearMathOutButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(mathInputPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(listPrimeButton)
+                    .addComponent(lcmButton))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout primeTabLayout = new javax.swing.GroupLayout(primeTab);
+        primeTab.setLayout(primeTabLayout);
+        primeTabLayout.setHorizontalGroup(
+            primeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, primeTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(primeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(mathInputPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mathMessagesPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        primeTabLayout.setVerticalGroup(
+            primeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(primeTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(mathMessagesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mathInputPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        appTabs.addTab("Primes", primeTab);
+
+        debugPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Debug Messages"));
+
+        displayAppStateButton.setText("Display App State");
+        displayAppStateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayAppStateButtonActionPerformed(evt);
+            }
+        });
+
+        dbgPane.setBackground(new java.awt.Color(0, 0, 0));
+        dbgPane.setFont(new java.awt.Font("Monospaced", 1, 14));
+        dbgPane.setForeground(new java.awt.Color(0, 255, 0));
+        jScrollPane1.setViewportView(dbgPane);
+
+        clearLogButton.setText("Clear Debug");
+        clearLogButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearLogButtonActionPerformed(evt);
+            }
+        });
+
+        displayMemoryButton.setText("Display Memory");
+        displayMemoryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayMemoryButtonActionPerformed(evt);
+            }
+        });
+
+        garbageCollectButton.setText("Free Memory");
+        garbageCollectButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                garbageCollectButtonActionPerformed(evt);
+            }
+        });
+
+        resetPrimesButton.setText("Reset Primes");
+        resetPrimesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetPrimesButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout debugPanelLayout = new javax.swing.GroupLayout(debugPanel);
+        debugPanel.setLayout(debugPanelLayout);
+        debugPanelLayout.setHorizontalGroup(
+            debugPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(debugPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(debugPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 905, Short.MAX_VALUE)
+                    .addGroup(debugPanelLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(debugPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(clearLogButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(displayAppStateButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(debugPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(garbageCollectButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(displayMemoryButton, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(resetPrimesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        debugPanelLayout.setVerticalGroup(
+            debugPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(debugPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(debugPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clearLogButton)
+                    .addComponent(displayMemoryButton)
+                    .addComponent(resetPrimesButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(debugPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(displayAppStateButton)
+                    .addComponent(garbageCollectButton))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout debugTabLayout = new javax.swing.GroupLayout(debugTab);
+        debugTab.setLayout(debugTabLayout);
+        debugTabLayout.setHorizontalGroup(
+            debugTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 963, Short.MAX_VALUE)
+            .addGroup(debugTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(debugTabLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(debugPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        debugTabLayout.setVerticalGroup(
+            debugTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 491, Short.MAX_VALUE)
+            .addGroup(debugTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(debugTabLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(debugPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        appTabs.addTab("Debug", debugTab);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -26,26 +502,160 @@ public class RgbFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(appTabs, javax.swing.GroupLayout.PREFERRED_SIZE, 968, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addComponent(appTabs, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+                .addGap(331, 331, 331))
         );
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-704)/2, (screenSize.height-601)/2, 704, 601);
+        setBounds((screenSize.width-1002)/2, (screenSize.height-631)/2, 1002, 631);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void displayAppStateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayAppStateButtonActionPerformed
+        dbgOut.write("rgb = %s\n", rgb.toString());
+        dbgOut.write("primeCount = %d\n", pfg.getPrimes().length);
+        dbgOut.write("last Prime = %s\n", pfg.getLastPrime());
+    }//GEN-LAST:event_displayAppStateButtonActionPerformed
+
+    private void clearLogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearLogButtonActionPerformed
+        dbgOut.clear();
+    }//GEN-LAST:event_clearLogButtonActionPerformed
+
+    private void setRGBButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setRGBButtonActionPerformed
+        int r = StrToInt(redTextField.getText(), 0, 255);
+        int g = StrToInt(greenTextField.getText(), 0, 255);
+        int b = StrToInt(blueTextField.getText(), 0, 255);
+        rgb = new RgbVals(r, g, b);
+
+        redPanel.setBackground(rgb.toColor(true, false, false));
+        greenPanel.setBackground(rgb.toColor(false, true, false));
+        bluePanel.setBackground(rgb.toColor(false, false, true));
+        combinedPanel.setBackground(rgb.toColor(true, true, true));
+    }//GEN-LAST:event_setRGBButtonActionPerformed
+
+    private void redSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_redSliderStateChanged
+        rgb.setRed(redSlider.getValue());
+        updateRGBBars();
+    }//GEN-LAST:event_redSliderStateChanged
+
+    private void greenSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_greenSliderStateChanged
+        rgb.setGreen(greenSlider.getValue());
+        updateRGBBars();
+    }//GEN-LAST:event_greenSliderStateChanged
+
+    private void blueSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_blueSliderStateChanged
+        rgb.setBlue(blueSlider.getValue());
+        updateRGBBars();
+    }//GEN-LAST:event_blueSliderStateChanged
+
+    private void displayMemoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayMemoryButtonActionPerformed
+        dbgOut.write("\n%s", Debug.showMem());
+    }//GEN-LAST:event_displayMemoryButtonActionPerformed
+
+    private void garbageCollectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_garbageCollectButtonActionPerformed
+        Debug.gc();
+        dbgOut.write("Calling memory Garbage collector\n");
+        dbgOut.write("\n%s", Debug.showMem());
+    }//GEN-LAST:event_garbageCollectButtonActionPerformed
+
+    private void primeRootsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primeRootsButtonActionPerformed
+        try {
+            List<BigInteger> numbers = BigIntegerUtils.getBigIntegerList(numberTextField.getText());
+            dbgOut.write("numbers = %s\n", BigIntegerUtils.listToString(numbers));
+            for (BigInteger number : numbers) {
+                List<PrimeRoot> primeRoots = pfg.getPrimeFactors(number);
+                String primeRootsStr = BigIntegerUtils.listToString(primeRoots);
+                dbgOut.write("primeRoots(%s) = %s\n", number.toString(), primeRootsStr);
+                mathOut.write("%s = %s\n", number.toString(), primeRootsStr);
+
+            }
+        } catch (Exception ex) {
+            dbgOut.writeException(ex);
+        }
+    }//GEN-LAST:event_primeRootsButtonActionPerformed
+
+    private void listPrimeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listPrimeButtonActionPerformed
+        try {
+            int n = Integer.parseInt(numberTextField.getText());
+            List<BigInteger> primes = BigIntegerUtils.getPrimes(pfg, n);
+            mathOut.write("%s\n", BigIntegerUtils.listToString(primes));
+        } catch (Exception ex) {
+            dbgOut.writeException(ex);
+        }
+    }//GEN-LAST:event_listPrimeButtonActionPerformed
+
+    private void clearMathOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearMathOutButtonActionPerformed
+        mathOut.clear();
+    }//GEN-LAST:event_clearMathOutButtonActionPerformed
+
+    private void resetPrimesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetPrimesButtonActionPerformed
+        pfg = new PrimeFactorGenerator();
+    }//GEN-LAST:event_resetPrimesButtonActionPerformed
+
+    private void gcdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gcdButtonActionPerformed
+        try {
+            List<BigInteger> numbers = BigIntegerUtils.getBigIntegerList(numberTextField.getText());
+            dbgOut.write("numbers = %s\n", BigIntegerUtils.listToString(numbers));
+            BigInteger lcf = BigIntegerUtils.gcd(pfg, numbers);
+            mathOut.write("Least common factor = %s\n", lcf.toString());
+
+        } catch (Exception ex) {
+            dbgOut.writeException(ex);
+        }
+    }//GEN-LAST:event_gcdButtonActionPerformed
+
+    private void lcmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lcmButtonActionPerformed
+        try {
+            List<BigInteger> numbers = BigIntegerUtils.getBigIntegerList(numberTextField.getText());
+            dbgOut.write("numbers = %s\n", BigIntegerUtils.listToString(numbers));
+            BigInteger lcm = BigIntegerUtils.lcm(pfg, numbers);
+            mathOut.write("Least common multiple = %s\n", lcm.toString());
+
+        } catch (Exception ex) {
+            dbgOut.writeException(ex);
+        }
+
+    }//GEN-LAST:event_lcmButtonActionPerformed
+
+    private void updateRGBBars() {
+        redPanel.setBackground(rgb.toColor(true, false, false));
+        greenPanel.setBackground(rgb.toColor(false, true, false));
+        bluePanel.setBackground(rgb.toColor(false, false, true));
+        combinedPanel.setBackground(rgb.toColor(true, true, true));
+        redTextField.setText(Integer.toString(rgb.getRed()));
+        greenTextField.setText(Integer.toString(rgb.getGreen()));
+        blueTextField.setText(Integer.toString(rgb.getBlue()));
+    }
+
+    private int StrToInt(String strIn, int lo, int hi) {
+        int val = 0;
+        try {
+            val = Integer.parseInt(strIn);
+        } catch (NumberFormatException ex) {
+            dbgOut.redWrite("Error converting %s to integer\n", val);
+            dbgOut.writeException(ex);
+        }
+        if (val < lo) {
+            return lo;
+        }
+        if (val > hi) {
+            return hi;
+        }
+        return val;
+    }
+
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             @Override
             public void run() {
                 new RgbFrame().setVisible(true);
@@ -53,8 +663,62 @@ public class RgbFrame extends javax.swing.JFrame {
         });
     }
 
+    private void userInit() {
+        dbgOut = new LogPane(dbgPane);
+        mathOut = new LogPane(primePane);
+        redPanel.setOpaque(true);
+        greenPanel.setOpaque(true);
+        bluePanel.setOpaque(true);
+        combinedPanel.setOpaque(true);
+        rgb = new RgbVals(0, 0, 0);
+        pfg = new PrimeFactorGenerator();
+        updateRGBBars();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel additiveTab;
+    private javax.swing.JTabbedPane appTabs;
+    private javax.swing.JPanel bluePanel;
+    private javax.swing.JSlider blueSlider;
+    private javax.swing.JTextField blueTextField;
+    private javax.swing.JButton clearLogButton;
+    private javax.swing.JButton clearMathOutButton;
+    private javax.swing.JPanel combinedPanel;
+    private javax.swing.JTextPane dbgPane;
+    private javax.swing.JPanel debugPanel;
+    private javax.swing.JPanel debugTab;
+    private javax.swing.JButton displayAppStateButton;
+    private javax.swing.JButton displayMemoryButton;
+    private javax.swing.JButton garbageCollectButton;
+    private javax.swing.JButton gcdButton;
+    private javax.swing.JPanel greenPanel;
+    private javax.swing.JSlider greenSlider;
+    private javax.swing.JTextField greenTextField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton lcmButton;
+    private javax.swing.JButton listPrimeButton;
+    private javax.swing.JPanel mathInputPane;
+    private javax.swing.JPanel mathMessagesPanel;
+    private javax.swing.JTextField numberTextField;
+    private javax.swing.JTextPane primePane;
+    private javax.swing.JButton primeRootsButton;
+    private javax.swing.JPanel primeTab;
+    private javax.swing.JPanel redPanel;
+    private javax.swing.JSlider redSlider;
+    private javax.swing.JTextField redTextField;
+    private javax.swing.JButton resetPrimesButton;
+    private javax.swing.JButton setRGBButton;
     // End of variables declaration//GEN-END:variables
-
+    private LogPane dbgOut;
+    private LogPane mathOut;
+    private RgbVals rgb;
+    private PrimeFactorGenerator pfg;
 }
