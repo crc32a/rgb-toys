@@ -583,7 +583,7 @@ public class RgbFrame extends javax.swing.JFrame {
     private void listPrimeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listPrimeButtonActionPerformed
         try {
             int n = Integer.parseInt(numberTextField.getText());
-            List<BigInteger> primes = BigIntegerUtils.getPrimes(pfg, n);
+            List<BigInteger> primes = BigIntegerUtils.getPrimes(n);
             mathOut.write("%s\n", BigIntegerUtils.listToString(primes));
         } catch (Exception ex) {
             dbgOut.writeException(ex);
@@ -596,13 +596,14 @@ public class RgbFrame extends javax.swing.JFrame {
 
     private void resetPrimesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetPrimesButtonActionPerformed
         pfg = new PrimeFactorGenerator();
+        BigIntegerUtils.setPrimeFactorGenerator(pfg);
     }//GEN-LAST:event_resetPrimesButtonActionPerformed
 
     private void gcdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gcdButtonActionPerformed
         try {
             List<BigInteger> numbers = BigIntegerUtils.getBigIntegerList(numberTextField.getText());
             dbgOut.write("numbers = %s\n", BigIntegerUtils.listToString(numbers));
-            BigInteger lcf = BigIntegerUtils.gcd(pfg, numbers);
+            BigInteger lcf = BigIntegerUtils.gcd(numbers);
             mathOut.write("Least common factor = %s\n", lcf.toString());
 
         } catch (Exception ex) {
@@ -614,7 +615,7 @@ public class RgbFrame extends javax.swing.JFrame {
         try {
             List<BigInteger> numbers = BigIntegerUtils.getBigIntegerList(numberTextField.getText());
             dbgOut.write("numbers = %s\n", BigIntegerUtils.listToString(numbers));
-            BigInteger lcm = BigIntegerUtils.lcm(pfg, numbers);
+            BigInteger lcm = BigIntegerUtils.lcm(numbers);
             mathOut.write("Least common multiple = %s\n", lcm.toString());
 
         } catch (Exception ex) {
@@ -672,6 +673,7 @@ public class RgbFrame extends javax.swing.JFrame {
         combinedPanel.setOpaque(true);
         rgb = new RgbVals(0, 0, 0);
         pfg = new PrimeFactorGenerator();
+        BigIntegerUtils.setPrimeFactorGenerator(pfg);
         updateRGBBars();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

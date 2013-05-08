@@ -12,6 +12,12 @@ import java.util.Set;
 
 public class BigIntegerUtils {
 
+    private static PrimeFactorGenerator primeFactorGenerator;
+
+    static {
+        primeFactorGenerator = new PrimeFactorGenerator();
+    }
+
     public static List<BigInteger> getBigIntegerList(String strIn) throws RuntimeException {
         List<BigInteger> bigInts = new ArrayList<BigInteger>();
         String[] strSplit = strIn.split(",");
@@ -27,13 +33,13 @@ public class BigIntegerUtils {
         return bigInts;
     }
 
-    public static List<BigInteger> getPrimes(PrimeFactorGenerator pfg, int n) {
-        int currPrimeCount = pfg.getPrimes().length;
+    public static List<BigInteger> getPrimes(int n) {
+        int currPrimeCount = primeFactorGenerator.getPrimes().length;
         if (currPrimeCount < n) {
-            pfg.addPrimes(n - currPrimeCount);
+            primeFactorGenerator.addPrimes(n - currPrimeCount);
         }
         List<BigInteger> primeList = new ArrayList<BigInteger>();
-        BigInteger[] primeArray = pfg.getPrimes();
+        BigInteger[] primeArray = primeFactorGenerator.getPrimes();
         for (int i = 0; i < n; i++) {
             primeList.add(primeArray[i]);
         }
@@ -145,11 +151,11 @@ public class BigIntegerUtils {
         return keys;
     }
 
-    public static BigInteger gcd(PrimeFactorGenerator pfg, List<BigInteger> bigIntsIn) {
+    public static BigInteger gcd(List<BigInteger> bigIntsIn) {
         BigInteger out = BigInteger.ONE;
         List<Map<BigInteger, Integer>> primeFactorMapList = new ArrayList<Map<BigInteger, Integer>>();
         for (BigInteger bigInt : bigIntsIn) {
-            Map<BigInteger, Integer> primeFactorMap = pfg.getPrimeFactorMap(bigInt);
+            Map<BigInteger, Integer> primeFactorMap = primeFactorGenerator.getPrimeFactorMap(bigInt);
             primeFactorMapList.add(primeFactorMap);
         }
         Map<BigInteger, Integer> filteredMap = filterPrimeFactorSet(primeFactorMapList, BigIntegerOperation.MIN);
@@ -158,16 +164,24 @@ public class BigIntegerUtils {
         return out;
     }
 
-    public static BigInteger lcm(PrimeFactorGenerator pfg, List<BigInteger> bigIntsIn) {
+    public static BigInteger lcm(List<BigInteger> bigIntsIn) {
         BigInteger out = BigInteger.ONE;
         List<Map<BigInteger, Integer>> primeFactorMapList = new ArrayList<Map<BigInteger, Integer>>();
         for (BigInteger bigInt : bigIntsIn) {
-            Map<BigInteger, Integer> primeFactorMap = pfg.getPrimeFactorMap(bigInt);
+            Map<BigInteger, Integer> primeFactorMap = primeFactorGenerator.getPrimeFactorMap(bigInt);
             primeFactorMapList.add(primeFactorMap);
         }
         Map<BigInteger, Integer> filteredMap = filterPrimeFactorSet(primeFactorMapList, BigIntegerOperation.MAX);
         out = composePrimeFactorMap(filteredMap);
 
         return out;
+    }
+
+    public static PrimeFactorGenerator getPrimeFactorGenerator() {
+        return primeFactorGenerator;
+    }
+
+    public static void setPrimeFactorGenerator(PrimeFactorGenerator aPfg) {
+        primeFactorGenerator = aPfg;
     }
 }
